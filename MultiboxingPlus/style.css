@@ -1,0 +1,266 @@
+
+#botpanel{
+    position: fixed;
+    top: 0;
+    left: -207px;
+    background: #000;
+    background: rgba(0,0,0,0.8);
+    z-index:201;
+    width: 205px;
+    height: 105px;
+    transition: left 0.5s ease-out 0s;
+    border-top-right-radius: 1px;
+    border-bottom-right-radius: 1px;
+}
+
+.hide{
+    cursor:pointer;
+    height:100%;
+    width:10px;
+    line-height:100px;
+    background: rgba(0, 0, 0, 0.45);
+    display:block!important;
+    position: absolute;
+    top: 0;
+    right: -10px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius:10px;
+    z-index:201;
+}
+
+.hide:hover{
+    background:rgba(0,0,0,0.9);
+}
+
+
+.botaction{
+    display: inline-block;
+    float:left;
+    width:50px;
+    height:34px;
+    padding:2px;
+    margin-top:5px;
+
+    font-weight: 600;
+    color: #fff;
+}
+
+.botaction:hover{
+    color:white;
+}
+
+.botstop{
+    display:none;
+    background: rgba(167, 7, 7, 0.45);
+}
+
+.botstart{
+    background: rgba(34, 175, 3, 0.46);
+}
+
+
+#botpanel .status{
+    margin-top:5px;
+    display:inline-block;
+    height:34px;
+    width: calc(100% - 50px);
+}
+
+.botstatus{
+    color: rgb(250,0,0);
+    user-select: none;
+    width: 70px;
+    word-wrap: break-word;
+}
+
+#botpanel span:first-of-type{
+    margin: 0 4px;
+    color:white;
+}
+
+#botpanel span{
+    display:inline-block;
+    float: left;
+    pointer-events: none;
+    user-select: none;
+    vertical-align: bottom;
+}
+
+.fbtoken-refresh{
+    display:inline-block;
+    float: left;
+    font-size: 30px;
+    background-image: url(http://localhost/vanish/refresh2.png);
+    background-size: 25px 25px;
+    background-repeat: no-repeat;
+    margin-top: 10px;
+    background-position:  0 5px;
+    width: 30px;
+    height: 34px;
+
+    cursor: pointer;
+}
+
+.fbtoken{
+    display: inline-block;
+    float: left;
+    height: 34px;
+    width: calc(100% - 30px);
+    /*margin-left:5px;*/
+    color: #8E8E8E;
+    float: left;
+    border-color:#8E8E8E;
+    margin-top: 10px;
+    background: rgba(0,0,0,0.1);
+}
+
+.fbtoken:focus{
+    color: #FFF;
+    border-color:#FFF;
+    outline: 0;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px #FFF;
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px #FFF;
+
+}
+
+
+
+   *{
+        box-sizing: border-box;
+     }
+        #chatbox{
+            display:block;
+            display:none;
+            position:absolute;
+            bottom:50px;
+            left:10px;
+            background:rgba(200,200,200,0.1);
+            width:250px;
+            height:400px;
+            border-radius: 20px;
+            font-family: "ubuntu";
+
+        }
+
+        #chatbox .messages-content{
+
+           margin-top:20px;
+            overflow: auto;
+            height:360px;
+
+        }
+
+        .message-row{
+            font-size: 12px;
+            display:block;
+            width:100%;
+            min-height:30px;
+            background: rgba(0,0,0,0.1);
+            margin: 2px 0;
+            padding: 5px;
+            border-radius: 3px;
+            color: white;
+        }
+
+        .sender{
+            color:red;
+            font-weight: 600;
+            margin-right: 4px;
+        }
+
+        #chatbox span{
+            display: inline-block;
+            float:left;
+        }
+
+
+.terjanq-panel{
+    padding: 0px;
+    width: 250px;
+    height: 300px;
+    position: relative;
+    background: url(https://s15.postimg.org/6egqcw923/Screenshot+at+12-15-26.png) -20px 60px;
+}
+
+.terjanqYoutube{
+    border: red 2px solid;
+
+}
+
+.h3light{
+    font-size: 18px;
+    margin-top: -6px;
+    margin-bottom: 10px;
+    color: #828080;
+    font-weight: 100;
+    display: inline-block;
+    float: left;
+}
+
+.h3light.version{
+    float:right;
+    font-size: 12px;
+    margin-top: 0px;
+}
+
+.terjanq-yt a{
+    color: #CA0000;
+}
+
+.terjanq-yt a:hover, .terjanq-yt a:focus, .terjanq-yt a:active{
+    color: #7D0000 !important;
+    text-decoration: none;
+}
+
+.terjanq-fb a{
+    color: #004590;
+}
+
+.terjanq-fb a:hover, .terjanq-fb a:focus, .terjanq-fb a:active {
+    color: #021F3E !important;
+    text-decoration: none;
+}
+
+.terjanq-box{
+    margin: 0 20px;
+    width: calc(100% - 40px);
+    height: 40px;
+    display:block;
+    font-size: 20px;
+}
+
+.terjanq-box span{
+    line-height: 40px;
+    margin-right: 5px;
+}
+
+.terjanq-fb{
+
+}
+
+.fbbox{
+    display: inline-block;
+    vertical-align: middle;
+    line-height: 0px;
+}
+
+
+.change-pic{
+    width:26px;
+    height:21px;
+
+    display: block;
+    color: rgb(30, 30, 30);
+    position:absolute;
+    background-image: url(https://static.xx.fbcdn.net/rsrc.php/v2/yv/r/C06pS_SGvq3.png);
+    background-size: auto;
+    background-repeat: no-repeat;
+    background-position: -26px -19px;
+    transform:scale(0.6, 0.6) translate(-5px, -3px)
+}
+
+.change-pic:hover{
+    text-decoration:none;
+    color:#FFF;
+    background-color: rgba(0,0,0,0.1);
+}
