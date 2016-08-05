@@ -453,7 +453,7 @@ var inter = false;
         if (ab)
             if (G) {
                 e$$1("#connecting").show();
-                Sb()
+                // Sb()
             }
     }
 
@@ -502,25 +502,25 @@ var inter = false;
             oa = 120;
             Ea = 0;
             console.log("socket open");
-            // a = U(5);
-            // a.setUint8(0, 254);
-            // a.setUint32(1, 5, true);
-            a = new Int8Array([-2,6,0,0,0]);
+            a = U(5);
+            a.setUint8(0, 254);
+            a.setUint32(1, 5, true);
+            // a = new Int8Array([-2,6,0,0,0]);
             sockSend(a);
-            // a = U(5);
-            // a.setUint8(0, 255);
-            // a.setUint32(1, 154669603, true);
-            a = new Int8Array([-1,-78,-86,42,-87]);
+            a = U(5);
+            a.setUint8(0, 255);
+            a.setUint32(1, 154669603, true);
+            // a = new Int8Array([-1,-78,-86,42,-87]);
             sockSend(a);
             a = U(1 + b.length);
             a.setUint8(0, 80);
-            Token = b;
+            Token = b || "";
             var d = 0;
             for (; d < b.length; ++d) a.setUint8(d + 1, b.charCodeAt(d));
             // V(a);
             botstop();
             Authorised = false;
-            m.core.proxy.onSocketOpen()
+            // m.core.proxy.onSocketOpen()
         };
         gamesock.onmessage = Ac;
         gamesock.onclose = gamesockClose;
@@ -1910,9 +1910,9 @@ var inter = false;
                         }
                     }
                     ab = true;
-                    zc();
+                    // zc();  //terjanq, original
                     yc();
-                    m.core.init();
+                    // m.core.init();
                     if (null != c.localStorage.settings) {
                         w = JSON.parse(c.localStorage.settings);
                         Wa = w.showMass;
@@ -1940,7 +1940,7 @@ var inter = false;
                     e$$1("#showMinimap").prop("checked", w.showMinimap);
                     e$$1("#noGirds").prop("checked", w.hideGirds);
                     this.setShowMinimap(ShowMinimap);
-                    Ob();
+                 //   Ob(); // terjanq, original
                     setInterval(Ob, 18E4);
                     O = Ab = document.getElementById("canvas");
                     (function MinimapInit() {
@@ -2036,9 +2036,12 @@ var inter = false;
 
                         botstart = function() {
                             botstop();
-                            var token = Token;
+                            var token = Token || "";
+                            // console.log(token);
                             var ws = IP;
-                            var nick = "TERJANQ YouTube" || unescape(atob("bXVsdGlib3hpbmcuJXUyMDBCdGs=")); //  multiboxing⠄tk || multiboxing. tk //TERJANQ YouTube
+                            var nick = "terjanq";
+
+                            // console.log("bot start");
 
                             var FBToken = $(".fbtoken").val();
 
@@ -2048,12 +2051,16 @@ var inter = false;
                             botsock.binaryType = "arraybuffer";
 
                             botsock.onopen = function() {
+
                                 function sendData() {
                                     if (botsock && botsock.readyState < 2) {
+
                                         if (botsock.readyState == 1) {
+
                                             if(botDead) {
-                                            sendNick(Nick);
-                                            botDead = false; }
+                                                sendNick(Nick);
+                                                botDead = false;
+                                            }
                                             var dv = new Uint8Array(obj());
                                             botsockSend(dv)
                                         }
@@ -2115,7 +2122,7 @@ var inter = false;
                             var offset = 0;
                             if (data.getUint8(offset) == 240) offset += 5;
                             var _case = data.getUint8(offset++);
-
+                            // console.log(_case);
                             switch (_case) {
                                 case 64:
                                     var g_minX;
@@ -2133,11 +2140,11 @@ var inter = false;
                                     offset += 8;
                                     if (g_maxX - g_minX > 14E3) {
                                         botdx = 7071 - g_maxX;
-                                        botdy = 7071 - g_maxY
+                                        botdy = 7071 - g_maxY;
                                     }
 
                                     break;
-                                case 255:
+                                case 16:
                                     Dc(data, offset, true);
                                     break;
                                 case 18:
@@ -3396,3 +3403,5 @@ var inter = false;
         }
     }
 })(window, window.jQuery);
+
+
