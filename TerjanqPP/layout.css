@@ -1,0 +1,973 @@
+#LeaderboardOverlay,
+#fps,
+#gameStats,
+#stats {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    pointer-events: none;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+    color: #fff;
+    background-color: #111;
+    font-family: Ubuntu
+}
+
+.checkbox {
+    width: 20px;
+    position: relative;
+    margin: 20px auto
+}
+
+.checkbox label {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: -webkit-linear-gradient(top, #222 0, #45484d 100%);
+    background: linear-gradient(to bottom, #222 0, #45484d 100%);
+    border-radius: 4px;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .5), 0 1px 0 rgba(255, 255, 255, .4)
+}
+
+.checkbox label:after {
+    content: '';
+    width: 9px;
+    height: 5px;
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    border: 3px solid #fcfff4;
+    border-top: none;
+    border-right: none;
+    background: 0 0;
+    opacity: 0;
+    -webkit-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    transform: rotate(-45deg)
+}
+
+#LeaderboardOverlay,
+#LeaderboardOverlayContent,
+#LeaderboardOverlayContent span {
+    overflow-x: hidden!important;
+    max-width: 200px!important;
+    width: 200px!important
+}
+
+#canEat,
+#eat,
+#score {
+    top: 10;
+    margin-left: 10px;
+    position: absolute
+}
+
+.checkbox label:hover::after {
+    opacity: .3
+}
+
+.checkbox input[type=checkbox]:checked+label:after,
+.yt {
+    opacity: 1
+}
+
+.checkbox input[type=checkbox] {
+    visibility: hidden
+}
+
+#fps,
+#gameStats,
+#stats {
+    font-weight: 600;
+    font-size: 20px;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    cursor: default
+}
+
+#canEat,
+#eat,
+#score {
+    background-color: rgba(0, 0, 0, .4);
+    padding: 5px 10px;
+    margin-bottom: 2px;
+    border-radius: 5px
+}
+
+#canEat {
+    margin-top: 40px;
+    color: #FFC107
+}
+
+#eat {
+    margin-top: 80px;
+    color: #8BC34A
+}
+
+#LeaderboardOverlay {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    background-color: rgba(0, 0, 0, .4);
+    border-radius: 10px;
+    padding: 5px 10px 10px 0;
+    font-weight: 700;
+    z-index: 210;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    text-align: center!important
+}
+
+#LeaderboardOverlay .lbTitle {
+    color: #2196F3;
+    font-size: 30px;
+    font-weight: 500!important;
+    margin: 0 -5px 0 0!important;
+    padding: 0!important;
+    text-align: center!important
+}
+
+#LeaderboardOverlay span {
+    display: block;
+    font-size: 14px;
+    padding-bottom: 1px;
+    font-weight: 600!important;
+    cursor: default
+}
+
+#LeaderboardOverlayContent {
+    text-align: center;
+    display: block!important
+}
+
+#LeaderboardOverlayContent span {
+    display: block!important
+}
+
+.aTitle {
+    text-align: center;
+    font-weight: 300!important;
+    letter-spacing: -1px;
+    text-transform: lowercase;
+    color: #fff;
+    margin-top: 5px!important;
+    margin-bottom: 15px!important;
+    padding-bottom: 0!important
+}
+
+#teamName {
+    border-radius: 5px;
+    margin-top: 0
+}
+
+.agario-panel>.profile {
+    display: none
+}
+
+.joinParty,
+.partyToken {
+    display: block;
+    height: 35px
+}
+
+.level {
+    padding: 20px 20px 15px 15px!important
+}
+
+.side-about {
+    height: 353px;
+    overflow: hidden;
+    padding: 00px!important;
+    margin: 0!important
+}
+
+.changelog-title {
+    font-weight: 300;
+    color: #2196F3;
+    padding-bottom: 10px;
+    font-size: 20px;
+    text-align: center!important;
+    display: block;
+    padding-top: 10px
+}
+
+.changelog-content {
+    font-weight: 300;
+    font-size: 12px;
+    margin-left: 30px;
+    margin-right: 10px;
+    padding-left: 0;
+    padding-right: 00px;
+    list-style-type: square
+}
+
+.changelog-content li {
+    margin-left: 0;
+    padding-bottom: 10px
+}
+
+.yt {
+    -webkit-transition: all .5s ease
+}
+
+.yt:hover {
+    -webkit-transition: all .5s ease;
+    transition: all 1s ease;
+    opacity: 1
+}
+
+.hotkeys,
+.hotkeys:hover {
+    padding: 15px 12px!important;
+    line-height: 20px;
+    color: #fff;
+    font-weight: 100;
+    -webkit-transition: all .5s ease;
+    opacity: 1;
+    font-size: 12px
+}
+
+.hotkeys:hover {
+    transition: all 1s ease
+}
+
+.hotkey {
+    font-size: 12px;
+    font-weight: 500;
+    color: #91219E;
+    float: right;
+    text-align: right
+}
+
+#toast-container>.toast {
+    background-image: none!important
+}
+
+.selectTeam {
+    cursor: pointer;
+    -webkit-user-select: none;
+    margin-left: -1px
+}
+
+.toast-info {
+    background: #000!important;
+    box-shadow: none!important;
+    border-radius: 10px!important;
+    width: 250px!important;
+    padding-top: 12px!important;
+    padding-bottom: 12px!important
+}
+
+.toast-success,
+.toast-warning {
+    background: #000;
+    border-radius: 10px!important;
+    padding-top: 12px!important;
+    padding-bottom: 12px!important;
+    width: 250px!important;
+    box-shadow: none!important
+}
+
+.chatCommand,
+.chatCommands {
+    color: #81D4FA
+}
+
+.toast-warning {
+    color: #81D4FA!important
+}
+
+.toast-success strong {
+    color: #1fa67a!important
+}
+
+#sendMessage,
+.close {
+    color: #fff!important
+}
+
+#toast-container{
+	pointer-events: none;
+}
+#toast-container>.toast:before {
+    position: fixed;
+    font-family: FontAwesome;
+    font-size: 20px;
+    line-height: 22px;
+    float: left;
+    padding-right: .5em;
+    margin: auto .5em auto -1.5em;
+
+}
+
+
+#toast-container>.toast-info:before {
+    content: "\f075"
+}
+
+#toast-container>.toast-warning:before {
+    content: "\f06a"
+}
+
+#toast-container>.toast-success:before {
+    content: "\f085"
+}
+
+.toast-bottom-left {
+    bottom: 50px!important;
+    left: 10px!important
+}
+
+input,
+input:focus,
+select,
+select:focus {
+    color: #fff!important;
+    background: #363636!important;
+    border: #363636!important
+}
+
+.chatOverlay {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    z-index: 999999999999;
+}
+
+#adsBottom,
+#canvas {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #000;
+}
+
+#sendMessage {
+    background-color: rgba(0, 0, 0, .4)!important;
+    border-radius: 10px;
+    width: 250px!important;
+    max-width: 250px!important;
+    padding: 10px;
+    font-size: 14px;
+    border: 0!important
+}
+
+#sendMessage::-webkit-input-placeholder {
+    color: #fff!important
+}
+
+#sendMessage:focus {
+    background-color: rgba(0, 0, 0, 1)!important
+}
+
+.btn {
+    text-transform: uppercase;
+    font-weight: 300;
+    font-size: 12px;
+    letter-spacing: 1.5px
+}
+
+.btn:focus,
+input:focus,
+select:focus {
+    outline: 0!important;
+    box-shadow: none!important
+}
+
+#canvas {
+    top: 0;
+    width: 100%;
+    height: 100%
+}
+
+form {
+    margin-bottom: 0
+}
+
+.btn-login,
+.btn-logout,
+.btn-play,
+.btn-play-guest,
+.btn-settings,
+.btn-spectate,
+.createParty {
+    height: 35px;
+    width: 100%;
+    margin-bottom: 10px;
+    box-shadow: none!important;
+    border: none!important
+}
+
+.btn-play,
+.btn-play-guest,
+.joinParty {
+    background: #1565C0!important
+}
+
+.btn-play-guest:hover,
+.btn-play:hover,
+.joinParty:hover {
+    background: #0D47A1!important
+}
+
+.btn-login,
+.createParty {
+    background: #2E7D32!important
+}
+
+.btn-login:hover,
+.createParty:hover {
+    background: #1B5E20!important
+}
+
+.btn-spectate {
+    width: 59%;
+    float: left;
+    background: #FF8F00!important
+}
+
+.btn-spectate:hover {
+    background: #FF6F00!important
+}
+
+.btn-logout {
+    background: #C62828!important
+}
+
+.btn-logout:hover {
+    background: #B71C1C!important
+}
+
+.btn-login,
+.btn-logout {
+    width: 39%;
+    float: right
+}
+
+.partyToken {
+    width: 59%;
+    float: left
+}
+
+.joinParty {
+    box-shadow: none!important;
+    border: none!important;
+    width: 39%;
+    float: right
+}
+
+#helloContainer[data-logged-in="0"] #agario-main-buttons .agario-profile,
+#helloContainer[data-logged-in="0"] .agario-exp-bar,
+#helloContainer[data-logged-in="0"] .btn-logout,
+#helloContainer[data-logged-in="0"] .btn-play,
+#helloContainer[data-logged-in="0"] .progress-bar-star,
+#helloContainer[data-logged-in="1"] .btn-login,
+#helloContainer[data-logged-in="1"] .btn-play-guest {
+    display: none
+}
+
+#helloContainer[data-logged-in="1"] .btn-play {
+    width: 100%
+}
+
+.btn-settings {
+    width: 40px
+}
+
+#adsBottomInner {
+    margin: 0 auto;
+    width: 728px;
+    height: 90px;
+    border: 5px solid #fff;
+    border-radius: 5px 5px 0 0;
+    background-color: #222;
+    box-sizing: content-box
+}
+
+.region-message {
+    display: none;
+    margin-bottom: 12px;
+    margin-left: 6px;
+    margin-right: 6px;
+    text-align: center
+}
+
+.close {
+    background: #fff!important
+}
+
+#customskin {
+    margin-bottom: 13px;
+    float: left
+}
+
+#teamNameContainer {
+    width: 29%;
+    float: left;
+    margin-bottom: 10px
+}
+
+#teamNameContainer button {
+    padding: 6px 6px 7px;
+    background-color: #fff;
+    color: #000
+}
+
+#teamNameContainer .input-group-btn {
+    border: 1px solid #ccc;
+    border-left: none;
+    border-radius: 0 4px 4px 0
+}
+
+#teamNameContainer .dropdown-menu {
+    left: -71px
+}
+
+#teamNameContainer .open a:hover,
+#teamNameContainer .open button {
+    background-color: #ddd
+}
+
+#nickContainer {
+    width: 69%;
+    float: right;
+    margin-bottom: 10px;
+    position: relative;
+    margin-top: 0
+}
+
+.color-hex {
+    width: 100px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    padding: 3px 5px
+}
+
+#colorPicker,
+h2 {
+    margin: 0!important;
+    padding: 0!important
+}
+
+#colorPicker {
+    position: absolute;
+    top: 7px;
+    left: 182px;
+    box-shadow: 0 0 5px #222
+}
+
+hr {
+    margin-top: 10px;
+    border: 0;
+    height: 0;
+    border-bottom: 1px dotted #444;
+    border-top: 1px dotted #111;
+    clear: both
+}
+
+#password,
+#username,
+.btn-login,
+.btn-logout,
+.btn-spectate,
+hr {
+    margin-bottom: 13px!important
+}
+
+#locationKnown #region {
+    width: 100%
+}
+
+#gamemode,
+#locationUnknown #region {
+    margin-bottom: 10px
+}
+
+#gamemode {
+    width: 39%;
+    float: right
+}
+
+#locationKnown {
+    width: 59%;
+    float: left
+}
+
+.agario-panel {
+    display: inline-block;
+    width: 350px;
+    background: #222!important;
+    margin: 2px;
+    border-radius: 10px;
+    padding: 15px;
+    vertical-align: top
+}
+
+#mainPanelOverlay {
+    padding-bottom: 5px
+}
+
+.agario-side-panel {
+    display: inline-block;
+    width: 220px
+}
+
+#helloContainer,
+.connecting-panel {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%)
+}
+
+#a300x250 {
+    width: 300px;
+    height: 250px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center center
+}
+
+.agario-exp-bar {
+    height: 30px;
+    position: relative;
+    border: 2px solid #01612B
+}
+
+.agario-exp-bar .progress-bar-text,
+.progress-bar-star {
+    position: absolute;
+    font-family: Ubuntu, sans-serif
+}
+
+.agario-exp-bar .progress-bar {
+    background-color: #383;
+    border-radius: 0 4px 4px 0;
+    -webkit-transition: none;
+    transition: none
+}
+
+.agario-exp-bar .progress-bar-text {
+    font-size: 12pt;
+    cursor: default;
+    opacity: .75;
+    color: #FFF;
+    text-align: center;
+    line-height: 26px;
+    text-shadow: 0 0 3px #000, -1px 0 0 #000, 1px 0 0 #000, 0 1px 0 #000, 0 -1px 0 #000, -1px -1px 0 #000, 1px 1px 0 #000, -1px 1px 0 #000, 1px -1px 0 #000;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0
+}
+
+#agario-results-table {
+    width: 100%
+}
+
+#agario-results-table th {
+    text-align: center;
+    font-size: 8pt
+}
+
+#agario-results-table td {
+    text-align: center;
+    color: #fff;
+    font-size: 11pt;
+    padding-bottom: 10px
+}
+
+.creating-party-text,
+.progress-bar-star {
+    color: #FFF;
+    text-shadow: 0 0 3px #000, -1px 0 0 #000, 1px 0 0 #000, 0 1px 0 #000, 0 -1px 0 #000, -1px -1px 0 #000, 1px 1px 0 #000, -1px 1px 0 #000, 1px -1px 0 #000;
+    cursor: default;
+    text-align: center
+}
+
+.progress-bar-star {
+    top: -13px;
+    right: -16px;
+    width: 50px;
+    height: 50px;
+    background-image: url(http://agar.io/img/star.png);
+    background-size: cover;
+    -webkit-transform: rotate3d(0, 0, 1, 10deg);
+    transform: rotate3d(0, 0, 1, 10deg);
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-delay: 0s;
+    animation-delay: 0s;
+    -webkit-animation-iteration-count: 1;
+    animation-iteration-count: 1;
+    line-height: 55px;
+    font-size: 12pt
+}
+
+.tooltip-inner {
+    max-width: 300px
+}
+
+.agarioProfilePanel {
+    padding: 10px
+}
+
+.agarioProfilePanel .agario-profile-picture {
+    float: left;
+    display: block;
+    width: 64px;
+    height: 64px;
+    border-radius: 5px;
+    border: 2px solid #CCC;
+    margin-right: 6px
+}
+
+.agarioProfilePanel .agario-profile-name-container {
+    float: left;
+    display: table;
+    width: 120px;
+    height: 64px;
+    position: relative
+}
+
+.agarioProfilePanel .agario-profile-name-container .agario-profile-name {
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+    font-weight: 700
+}
+
+#helloContainer[data-has-account-data="0"] .agarioProfilePanel,
+.agario-party,
+.agario-party-0,
+.agario-party-1,
+.agario-party-2,
+.agario-party-3,
+.agario-party-4,
+.agario-party-5,
+.agario-party-6 {
+    display: none
+}
+
+#helloContainer[data-gamemode=":party"] .agario-party {
+    display: block;
+    position: relative
+}
+
+#helloContainer[data-gamemode=":party"] .agario-promo {
+    display: none
+}
+
+#helloContainer[data-party-state="4"] .agario-party-4,
+#helloContainer[data-party-state="5"] .agario-party-5,
+#helloContainer[data-party-state="6"] .agario-party-6,
+#helloContainer[data-party-state="0"] .agario-party-0,
+#helloContainer[data-party-state="1"] .agario-party-1,
+#helloContainer[data-party-state="2"] .agario-party-2,
+#helloContainer[data-party-state="3"] .agario-party-3 {
+    display: block
+}
+
+.partyToken {
+    margin-bottom: 10px
+}
+
+.side-container {
+    vertical-align: top;
+    display: inline-block;
+    width: 224px
+}
+
+.cell-spinner {
+    display: block;
+    margin: 0
+}
+
+.creating-party-text {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    font-size: 24px;
+    line-height: 100px
+}
+
+.agario-results-0,
+.agario-results-1,
+.agario-results-2 {
+    display: none
+}
+
+#helloContainer[data-results-state="0"] .agario-results-0,
+#helloContainer[data-results-state="1"] .agario-results-1,
+#helloContainer[data-results-state="2"] .agario-results-2 {
+    display: block
+}
+
+#options>label {
+    display: block;
+    width: 94px;
+    float: left
+}
+
+#s300x250,
+#statsContinue {
+    left: 25px;
+    right: 25px;
+    width: 300px
+}
+
+#stats {
+    position: relative;
+    width: 350px;
+    height: 581px;
+    padding: 0 0 300px;
+    overflow: hidden
+}
+
+#s300x250,
+#statsChartText,
+#statsContinue,
+#statsGraph,
+#statsPellets,
+#statsSubtext,
+#statsText,
+.tosBox {
+    position: absolute
+}
+
+#statsHighestMassContainer,
+#statsPelletsContainer,
+#statsPlayerCellsEatenContainer,
+#statsTimeAliveContainer,
+#statsTimeLeaderboardContainer,
+#statsTopPositionContainer {
+    position: absolute;
+    width: 100px;
+    height: 100px
+}
+
+#statsPelletsContainer {
+    top: 30px;
+    left: 50px
+}
+
+#statsHighestMassContainer {
+    top: 30px;
+    right: 50px
+}
+
+#statsTimeAliveContainer {
+    top: 85px;
+    left: 50px
+}
+
+#statsTimeLeaderboardContainer {
+    top: 85px;
+    right: 50px
+}
+
+#statsPlayerCellsEatenContainer {
+    top: 140px;
+    left: 50px
+}
+
+#statsTopPositionContainer {
+    top: 140px;
+    right: 50px
+}
+
+#statsPellets {
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    margin: auto
+}
+
+#statsText {
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    line-height: 100px;
+    font-size: 23px
+}
+
+#statsSubtext {
+    bottom: 0;
+    left: 0;
+    right: 0;
+    line-height: 60px;
+    font-size: 12px;
+    color: #fff;
+    text-align: center
+}
+
+#statsChartText {
+    left: 20px;
+    bottom: 250px;
+    line-height: 40px;
+    font-size: 40px
+}
+
+#statsChartText,
+#statsText {
+    cursor: default;
+    color: #fff;
+    text-align: center;
+    font-weight: 700
+}
+
+#statsContinue {
+    bottom: 295px
+}
+
+#statsGraph {
+    bottom: 350px;
+    left: 0;
+    right: 0;
+    opacity: .4
+}
+
+#s300x250 {
+    bottom: 10px;
+    height: 250px
+}
+
+.tosBox {
+    bottom: 0;
+    right: 0;
+    background-color: #222;
+    border-radius: 5px 0 0;
+    padding: 5px 10px
+}
+
+input[type=checkbox] {
+    float: left!important;
+    margin-right: 6px!important;
+    cursor: pointer!important;
+    background: #444!important;
+    border: 1px solid #444!important
+}
+
+input,
+select {
+    font-weight: 300!important
+}
