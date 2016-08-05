@@ -2902,42 +2902,44 @@ if ("undefined" == typeof jQuery) throw new Error("Bootstrap's JavaScript requir
     b.location.search.indexOf("fb");
     u.a = b.hasBottomAd;
     h && console.log("Init ads");
-    (function() {
-        var a = {},
-            e = null,
-            c = null,
-            d = null,
-            g = null,
-            h = -1 != b.location.search.indexOf("fb"),
-            k = r() && !h,
-            l = u.a;
-        h ? (a = "/53945695/agar_facebook/agar/300x250", d = "/53945695/agar_facebook/agar/300x250_Stats", g = "/53945695/agar_facebook/agar/300x250") : (g = "/116850162/300x250_init", e = "/116850162/728x90_init", a = "/116850162/300x250_login", d = "/116850162/300x250_stats", c = "/116850162/728x90_login");
-        var n = b.googletag;
-        n.cmd.push(function() { n.pubads().setTargeting("abtest", y("ABGroupDFP") + "");
-            f.ac.push(m.defineSlot(g, [300, 250], "g300x250"));
-            l && f.ac.push(m.defineSlot(e, [728, 90], "g728x90"));
-            k || (f.ab.push(m.defineSlot(d, [300, 250], "s300x250")), f.aa.push(m.defineSlot(a, [300, 250], "a300x250")), l && f.aa.push(m.defineSlot(c, [728, 90], "a728x90")));
-            n.pubads().enableSingleRequest();
-            n.pubads().disableInitialLoad();
-            n.enableServices();
-            v = !0;
-            null != x && (console.log("refreshing from queue"), B(x)) }) })();
-    (function() {
-        if (r()) {
-            var a = { acct: 13694, site: 73068, zone: 346604, size: 15 },
-                e = { acct: 13694, site: 73068, zone: 363786, size: 2 };
-            if (-1 == b.location.search.indexOf("fb")) {
-                var c = u.a;
-                f.ab.push(l.defineSlot(a, "300x250", "s300x250"));
-                f.aa.push(l.defineSlot(a, "300x250", "a300x250"));
-                c && f.aa.push(l.defineSlot(e, "728x90", "a728x90")) } } })();
-    h && console.log("Ads initted");
-    h && console.log("Your group: ", r() ? "rubicon" : "dfp");
-    (function() {
-        var a = -1 != b.location.search.indexOf("fb"),
-            a = r() && !a;
-        googletag.cmd.push(function() { googletag.display("g300x250") });
-        a || (googletag.cmd.push(function() { googletag.display("s300x250") }), googletag.cmd.push(function() { googletag.display("a300x250") })) })()
+    // (function() {
+    //     var a = {},
+    //         e = null,
+    //         c = null,
+    //         d = null,
+    //         g = null,
+    //         h = -1 != b.location.search.indexOf("fb"),
+    //         k = r() && !h,
+    //         l = u.a;
+    //     h ? (a = "/53945695/agar_facebook/agar/300x250", d = "/53945695/agar_facebook/agar/300x250_Stats", g = "/53945695/agar_facebook/agar/300x250") : (g = "/116850162/300x250_init", e = "/116850162/728x90_init", a = "/116850162/300x250_login", d = "/116850162/300x250_stats", c = "/116850162/728x90_login");
+    //     var n = b.googletag;
+    //     n.cmd.push(function() { n.pubads().setTargeting("abtest", y("ABGroupDFP") + "");
+    //         f.ac.push(m.defineSlot(g, [300, 250], "g300x250"));
+    //         l && f.ac.push(m.defineSlot(e, [728, 90], "g728x90"));
+    //         k || (f.ab.push(m.defineSlot(d, [300, 250], "s300x250")), f.aa.push(m.defineSlot(a, [300, 250], "a300x250")), l && f.aa.push(m.defineSlot(c, [728, 90], "a728x90")));
+    //         n.pubads().enableSingleRequest();
+    //         n.pubads().disableInitialLoad();
+    //         n.enableServices();
+    //         v = !0;
+    //         null != x && (console.log("refreshing from queue"), B(x)) })
+
+    //          })();
+    // (function() {
+    //     if (r()) {
+    //         var a = { acct: 13694, site: 73068, zone: 346604, size: 15 },
+    //             e = { acct: 13694, site: 73068, zone: 363786, size: 2 };
+    //         if (-1 == b.location.search.indexOf("fb")) {
+    //             var c = u.a;
+    //             f.ab.push(l.defineSlot(a, "300x250", "s300x250"));
+    //             f.aa.push(l.defineSlot(a, "300x250", "a300x250"));
+    //             c && f.aa.push(l.defineSlot(e, "728x90", "a728x90")) } } })();
+    // h && console.log("Ads initted");
+    // h && console.log("Your group: ", r() ? "rubicon" : "dfp");
+    // (function() {
+    //     var a = -1 != b.location.search.indexOf("fb"),
+    //         a = r() && !a;
+    //     googletag.cmd.push(function() { googletag.display("g300x250") });
+    //     a || (googletag.cmd.push(function() { googletag.display("s300x250") }), googletag.cmd.push(function() { googletag.display("a300x250") })) })()
 })(window, window.jQuery);
 (function(exports) {
     var Util = { extend: function() { arguments[0] = arguments[0] || {};
