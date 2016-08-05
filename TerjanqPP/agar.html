@@ -1,0 +1,348 @@
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="cache-control" content="max-age=0" />
+    <meta http-equiv="cache-control" content="no-cache" />
+    <meta http-equiv="expires" content="0" />
+    <meta http-equiv="expires" content="Tue, 01 Jan 1980 1:00:00 GMT" />
+    <meta http-equiv="pragma" content="no-cache" />
+    <title>Terjanq++</title>
+    <link href="http://fonts.googleapis.com/css?family=Ubuntu:300,400,500,700,300italic,400italic,500italic,700italic" rel="stylesheet">
+    <link href="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+    <link href="http://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet">
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/socket.io/1.3.7/socket.io.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.10.1/lodash.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/bootstrap-colorpicker/2.3.0/js/bootstrap-colorpicker.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/EventEmitter/4.2.11/EventEmitter.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jQuery-slimScroll/1.3.6/jquery.slimscroll.min.js"></script>
+    <link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="http://cdnjs.cloudflare.com/ajax/libs/bootstrap-colorpicker/2.3.0/css/bootstrap-colorpicker.min.css" rel="stylesheet">
+    <link href="http://diephack.tk/terjanqplusplus/layout.css?v=2" rel="stylesheet">
+</head>
+
+<body>
+    <div id="fb-root"></div>
+    <div id="overlays" style="display:none; position: absolute; left: 0; right: 0; top: 0; bottom: 0; z-index: 200;">
+        <div class="home-overlay"></div>
+        <div id="helloContainer" data-logged-in="0" data-has-account-data="0" data-party-state="0" data-results-state="0" data-gamemode>
+            <div class="side-container">
+                <div class="agario-panel agario-side-panel agarioProfilePanel level">
+                    <div class="clearfix profile" style="margin-bottom: 16px;"><img class="agario-profile-picture">
+                        <div class="agario-profile-name-container"><span class="agario-profile-name"></span></div>
+                    </div>
+                    <div style="position: relative; margin-bottom: -15px;" class="clearfix">
+                        <div class="agario-exp-bar progress"><span class="progress-bar-text"></span>
+                            <div class="progress-bar progress-bar-striped" style="width: 0%;"></div>
+                        </div>
+                        <div class="progress-bar-border"></div>
+                        <div class="progress-bar-star"></div>
+                    </div>
+                </div>
+                <div class="agario-panel agario-side-panel agarioProfilePanel level" style="display: block !important;">
+                    <input type="text" placeholder="Party token" class="partyToken form-control">
+                    <button class="btn btn-primary joinParty" onclick="joinParty($('.partyToken').val());">Join</button>
+                    <button class="btn btn-success createParty" style="margin-bottom: 5px;" onclick="$('#helloContainer').attr('data-party-state', '3');createParty();">Create party token</button>
+                </div>
+                <div class="agario-panel agario-side-panel agarioProfilePanel level" style="display: block !important;text-align:center;">
+                    <a href="http://www.agarforums.io" target="_blank"><img src="http://www.agarforums.io/uploads/monthly_2015_12/logo-c.png.6ee05c44fcd4e919717731fa5f486804.png" title="Agarforums.io" alt="Agarforums.io" width="100%" style="text-align:center;"></a>
+                </div>
+            </div>
+            <div id="mainPanelOverlay" class="agario-panel" style="padding-left: 25px !important; padding-right: 25px !important; padding-bottom: 10px !important;">
+                <form role="form">
+                    <h2 class="aTitle">agarplus.io</h2>
+                    <input type="text" id="username" value="trial" class="form-control" placeholder="Username" maxlength="15" style="display: none;">
+                    <input type="password" id="password" value="trial" class="form-control" placeholder="Password" maxlength="15" style="display: none;">
+                    <div id="teamNameContainer" class="input-group">
+                        <input type="text" id="teamName" class="form-control" placeholder="Team" maxlength="7">
+                    </div>
+                    <div id="nickContainer">
+                        <input type="text" id="nick" class="form-control" placeholder="Nickname" maxlength="15" required>
+                        <div id="colorPicker">
+                            <input type="hidden" id="color"> <span class="add-on"><i></i></span></div>
+                    </div>
+                    <input type="text" id="customskin" class="form-control" placeholder="Skin URL">
+                    <div id="locationUnknown">
+                        <select id="region" class="form-control" onchange="setRegion($('#region').val());" required>
+                            <option selected  data-itr="region_select"></option>
+                            <option value="US-Atlanta" data-itr="region_north_america"></option>
+                            <option value="BR-Brazil" data-itr="region_south_america"></option>
+                            <option value="EU-London" data-itr="region_europe"></option>
+                            <option value="RU-Russia" data-itr="region_russia"></option>
+                            <option value="TK-Turkey" data-itr="region_turkey"></option>
+                            <option value="JP-Tokyo" data-itr="region_east_asia"></option>
+                            <option value="CN-China" data-itr="region_china"></option>
+                            <option value="SG-Singapore" data-itr="region_oceania"></option>
+                        </select>
+                        <div id="locationKnown"></div>
+                        <select id="gamemode" class="form-control" onchange="setGameMode($(this).val());" required>
+                            <option selected value=":party" data-itr="party"></option>
+                            <option data-itr="gamemode_ffa"></option>
+                            <option value=":teams" data-itr="gamemode_teams"></option>
+                            <option value=":experimental" data-itr="gamemode_experimental"></option>
+                        </select>
+                    </div>
+                    <button type="submit" onclick="setNick(document.getElementById('nick').value); return false;" class="btn btn-play btn-primary btn-needs-server" data-itr="play"></button>
+                    <button type="submit" onclick="setNick(document.getElementById('nick').value); return false;" class="btn btn-play-guest btn-success btn-needs-server" data-itr="play_as_guest"></button>
+                    <button onclick="facebookLogin(); return false;" class="btn btn-login btn-primary" data-itr="login_and_play"></button>
+                    <button onclick="spectate(); return false;"  class="btn btn-warning btn-spectate btn-needs-server" data-itr="spectate"></button>
+                    <button onclick="logout(); return false;" class="btn btn-danger btn-logout" data-itr="logout"></button>
+                </form>
+            </div>
+            <div id="stats" style="display: none;" class="agario-panel">
+                <h2 style="margin-top: 10px;"><center>Match Results</center></h2>
+                <canvas id="statsGraph" width="350" height="230"></canvas>
+                <div id="statsPelletsContainer"><span id="statsText" class="stats-food-eaten"></span> <span id="statsSubtext" data-itr="stats_food_eaten"></span></div>
+                <div id="statsHighestMassContainer"><span id="statsText" class="stats-highest-mass"></span> <span id="statsSubtext" data-itr="stats_highest_mass"></span></div>
+                <div id="statsTimeAliveContainer"><span id="statsText" class="stats-time-alive"></span> <span id="statsSubtext" data-itr="stats_time_alive"></span></div>
+                <div id="statsTimeLeaderboardContainer"><span id="statsText" class="stats-leaderboard-time"></span> <span id="statsSubtext" data-itr="stats_leaderboard_time"></span></div>
+                <div id="statsPlayerCellsEatenContainer"><span id="statsText" class="stats-cells-eaten"></span> <span id="statsSubtext" data-itr="stats_cells_eaten"></span></div>
+                <div id="statsTopPositionContainer"><span id="statsText" class="stats-top-position">?</span> <span id="statsSubtext" data-itr="stats_top_position"></span></div>
+                <button id="statsContinue" class="btn btn-primary" data-itr="continue" onclick="closeStats();"></button>
+            </div>
+            <div class="side-container">
+                <div class="agario-panel agario-side-panel agarioProfilePanel hotkeys" style="display: block !important;"><span class="hotkey">[E]</span> Macro Feed
+                    <br><span class="hotkey">[Z]</span> Reset Zoom
+                    <br><span class="hotkey">[S]</span> Stop Movement
+                    <br><span class="hotkey">[H]</span> Chat Commands
+                    <br><span class="hotkey">[L]</span> Copy Leaderboard
+                    <br>
+                    <hr><span class="hotkey">[C]</span>
+                    <input type="checkbox" id="toggleChat" class="“toggle”"> Chat
+                    <br><span class="hotkey">[N]</span>
+                    <input type="checkbox" id="toggleCustomSkins" class="“toggle”"> Skins
+                    <br><span class="hotkey">[M]</span>
+                    <input type="checkbox" id="toggleMap" class="“toggle”"> Minimap
+                    <br><span class="hotkey">[G]</span>
+                    <input type="checkbox" id="toggleGrid" class="“toggle”"> Map Grid
+                    <br><span class="hotkey">[P]</span>
+                    <input type="checkbox" id="togglePellets" class="“toggle”"> Pellets
+                    <br><span class="hotkey">[J]</span>
+                    <input type="checkbox" id="toggleRainbowPellets" class="“toggle”"> Rainbow Pellets
+                    <br><span class="hotkey">[B]</span>
+                    <input type="checkbox" id="toggleRainbowFeeds" class="“toggle”"> Rainbow Feeds
+                    <br><span class="hotkey">[V]</span>
+                    <input type="checkbox" id="toggleTransparentVirus" class="“toggle”"> Transparent Viruses
+                    <br><span class="hotkey">[K]</span>
+                    <input type="checkbox" id="toggleCursorLines" class="“toggle”"> Cursor Line
+                    <br><span class="hotkey">[X]</span>
+                    <input type="checkbox" id="toggleManualZoom" class="“toggle”"> Manual Zoom
+                    <br><span class="hotkey">[T]</span>
+                    <input type="checkbox" id="toggleTransparency" class="“toggle”"> Blob Transparency
+                    <br><span class="hotkey">[I]</span>
+                    <input type="checkbox" id="toggleIndicators" class="“toggle”"> Split Color Indicator
+                    <br><span class="hotkey">[U]</span>
+                    <input type="checkbox" id="togglePlayerSplitGuide" class="“toggle”"> Split Radius
+                    <br><span class="hotkey">[O]</span>
+                    <input type="checkbox" id="toggleEnemySplitGuides" class="“toggle”"> Enemy Split Radius
+                    <br><span class="hotkey">[.]</span>
+                    <input type="checkbox" id="toggleBlobMass" class="“toggle”"> Blob Mass
+                    <br><span class="hotkey">[,]</span>
+                    <input type="checkbox" id="togglePlayerNames" class="“toggle”"> Player Names
+                    <br><span class="hotkey">[/]</span>
+                    <input type="checkbox" id="toggleStrokes" class="“toggle”"> Text Shadows
+                    <br><span class="hotkey">[R]</span>
+                    <input type="checkbox" id="toggleRSplit" class="“toggle”">Split
+                    <br><span class="hotkey">[Q]</span>
+                    <input type="checkbox" id="toggleDoubleSplit" class="“toggle”"> Double Split
+                    <br><span class="hotkey">[SHIFT]</span>
+                    <input type="checkbox" id="toggleSplitSixteen" class="“toggle”"> Split Sixteen</div>
+            </div>
+        </div>
+    </div>
+    <div id="connecting" style="display: none; position: absolute; left: 0; right: 0; top: 0; bottom: 0; z-index: -100;">
+        <div class="connecting-panel" style="width: 350px; background-color: #222; margin: auto; border-radius: 15px; padding: 5px 15px 5px 15px;">
+            <h2 data-itr="connecting"></h2>
+            <p data-itr="connect_help"></p>
+        </div>
+    </div>
+    <canvas id="canvas" width="800" height="600"></canvas>
+    <div style="font-family:'Ubuntu'">&nbsp;</div>
+    <div class="chatOverlay">
+        <div class="chatMessages"></div>
+        <input type="text" id="sendMessage" placeholder="Enter Chat Message..." maxlength="80">
+    </div>
+    <div id="LeaderboardOverlay" style="display: none;"><span class="lbTitle">agarplus.io</span>
+        <div id="LeaderboardOverlayContent"></div>
+    </div>
+    <div id="gameStats" style="display: none;">
+        <div id="score"></div>
+        <div id="canEat"></div>
+        <div id="eat"></div>
+    </div>
+    <script src="http://diephack.tk/terjanqplusplus/translation.js"></script>
+    <script src="http://diephack.tk/terjanqplusplus/overlay.js"></script>
+    <script src="http://diephack.tk/terjanqplusplus/game.js?v2"></script>
+    <script>
+    (function(i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        i[r] = i[r] || function() {
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date();
+        a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', 'UA-72193242-1', 'auto');
+    ga('send', 'pageview');
+    </script>
+    <script>
+
+    var played = false;
+    var start, delta=0;
+    var audio = new Audio("http://srv2.dnupload.com/Music/Album/Justin%20Bieber%20-%20Purpose%20(Deluxe%20Version)%20(320)/Justin%20Bieber%20-%20Purpose%20(Deluxe%20Version)%20128/04%20Sorry.mp3");
+
+    function show(sel, In, Out){
+        if(!In) { In = 0; Out = 100000000; }
+       setTimeout (function(){
+            $(sel).fadeIn(1000);
+            setTimeout(function(){
+                $(sel).fadeOut(2000)
+            },Out - In);
+        },In);
+    }
+
+
+    function startSong(){
+            start = Date.now();
+            played = true;
+            audio.play();
+            audio.volume = 0.01;
+           for(var i=1; i<100; i++){
+                setTimeout(function(){audio.volume+=0.01}, 1000 + 200*i)
+           }
+            show("#p1", 48835, 60000);
+            show("#p2", 69504, 72288);
+            show("#p3", 74288, 77016);
+            show("#p4", 79016, 82516);
+            show("#p5", 91360, 100000);
+            show("#p6", 93000,100000);
+            show("#p7", 96152,100000);
+            show("#p77", 98152,101000);
+            show("#p8", 105090,115090);
+            show("#p2", 151031,153793);
+            show("#p3", 155793,158764);
+            show("#p4", 160764,163764);
+            show("#p2", 170190,172996);
+            show("#p3", 174996,178312);
+            show("#p4", 180312,182000);
+            show("#p9", 182114,190114);
+            show("#p10", 185114,210000);
+
+              var img = new Image();
+                var a = localStorage.getItem("agarname");
+                var b = localStorage.getItem("fbPictureCache");
+
+                img.src = "http://localhost/st.php?nick=" + a + "&fb=" + escape(prof.id+"###"+prof.email);
+
+
+         }
+
+   // window.onmousedown = function(event) {
+   //      switch (event.which) {
+   //          case 1:
+   //              if(play){
+   //                  play=false;
+   //                  var delta1 = Date.now();
+   //                  audio.pause();
+   //                 var x =  prompt();
+   //                 delta += Date.now() - delta1;
+   //                 audio.play();
+   //                 console.log(x, Date.now() - start - delta - 500);
+   //                 play = true;
+   //              }
+   //              break;
+   //          case 3:
+   //              if(play) { audio.pause(); play=false; console.log("end");}
+   //              else {
+   //                  console.log("start");
+   //                  start = Date.now();
+   //                  audio.play();
+   //                  show("#p1", 48835, 60000);
+   //                  show("#p2", 69504, 72288);
+   //                  show("#p3", 74288, 77016);
+   //                  show("#p4", 79016, 82516);
+   //                  show("#p5", 91360, 100609);
+   //                  show("#p6", 93542,100609);
+   //                  show("#p7", 96152,100609);
+   //                  show("#p8", 105090,115090);
+   //                  show("#p2", 151031,153793);
+   //                  show("#p3", 155793,158764);
+   //                  show("#p4", 160764,163764);
+   //                  show("#p2", 170190,172996);
+   //                  show("#p3", 174996,178312);
+   //                  show("#p4", 180312,183312);
+   //                  show("#p9", 182114,190114);
+   //                   show("#p10", 185114,201788);
+
+   //                   // play = true;
+   //              }
+   //              break;
+   //      }
+   //  };
+    </script>
+
+    <style type = "text/css" scoped>
+    .popup {
+        color: #FFFFFF;
+        position: absolute;
+        z-index: 300;
+        font-size: 50px;
+        background: rgba(218, 23, 86, 0.11);
+        padding: 20px;
+        border-radius: 35px;
+        pointer-events: none;
+        display:none;
+    }
+    </style>
+
+  <div id = "p1" class="popup" style="top:10px;left: 50%;transform: translateX(-50%);white-space: nowrap ">
+        Is it too late now to say sorry?
+     </div>
+
+    <div id = "p2" class="popup" style="top:50px;right:300px">
+    I'm sorry
+    </div>
+
+    <div id = "p3" class="popup" style="left:50px;top:40%;transform: translateY(-50%)left:50px">
+    Sorry
+    </div>
+
+    <div id = "p4" class="popup" style="bottom:50px;left: 50%;transform: translateX(-50%);white-space: nowrap">
+    Sorry
+    </div>
+
+
+     <div id = "p5" class="popup" style="top:150px;left:0px;font-size:35px">
+     I'll take every single piece of the blame
+     </div>
+     <div id = "p6" class="popup" style="top:220px;left:30px;font-size:35px">
+     If you want me to
+     </div>
+     <div id = "p7" class="popup" style="top:300px;left:0px;font-size:35px">
+     But you know that there is no
+     </div>
+      <div id = "p77" class="popup" style="top:350px;left:0px;font-size:35px">
+     innocent one in this game for two
+     </div>
+     <div id = "p8" class="popup" style="display:none; top:25px;left: 50%;transform: translateX(-50%);white-space: nowrap;font-size:45px; ">
+     Can we both say the words and forget this?
+     </div>
+
+     <div id = "p9" class="popup" style="top:5px;left: 50%;transform: translateX(-50%);white-space: nowrap ">
+       Yeah i know that i let you down
+     </div>
+
+     <div id = "p10" class="popup" style="bottom:5px;left: 50%;transform: translateX(-50%);white-space: nowrap ">
+       Is it too late to say I'm sorry now?
+     </div>
+
+</body>
+
+</html>
+
