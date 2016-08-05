@@ -67,13 +67,13 @@
     };
     </script>
     <link href='https://fonts.googleapis.com/css?family=Ubuntu:700' rel='stylesheet' type='text/css'>
-    <link href="http://localhost/vanish/master.css" rel="stylesheet" type='text/css'>
-    <link href="http://localhost/vanish/style.css" rel="stylesheet" type='text/css'>
+    <link href="http://diephack.tk/multiboxingplus/master.css" rel="stylesheet" type='text/css'>
+    <link href="http://diephack.tk/multiboxingplus/style.css" rel="stylesheet" type='text/css'>
   <!--   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
      <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
  -->
-    <script src="http://localhost/vanish/master.js"></script>
+    <script src="http://diephack.tk/multiboxingplus/master.js"></script>
     <script>
         window.EnvConfig={"env_production":true,"fb_app_id":677505792353827,"master_url":"m.agar.io","socketEndpoint":'wss://web-live-v2-0.agario.miniclippt.com/ws',"xsolla_endpoint":"/web/20151101075639/https://payments.agario.miniclippt.com","fb_endpoint":"/web/20151101075639/https://rewardcallback-live.agario.miniclippt.com/payments/facebook"}
     </script>
@@ -85,7 +85,7 @@
                     window["parseString"]=parseString;
     </script>
     <script src="main_out.js?v=69"></script>
-    <script type="text/javascript" src="http://localhost/vanish/mc.js?v=73"></script>
+    <script type="text/javascript" src="http://diephack.tk/multiboxingplus/mc.js?v=73"></script>
 
 
 </head>
@@ -235,12 +235,16 @@
                     </div>
                     <div class="form-group clearfix">
                         <input id="nick" class="form-control" placeholder="Nick" maxlength="15" autofocus />
+
+
                         <select id="gamemode" class="form-control" onchange="setGameMode($(this).val());" required>
                             <option value="" data-itr="gamemode_ffa"></option>
                             <option value=":teams" data-itr="gamemode_teams"></option>
                             <option value=":experimental" data-itr="gamemode_experimental"></option>
                             <option value=":party" data-itr="party"></option>
                         </select>
+                    <input id="privateServer" class="form-control" placeholder="server IP" style="margin-top:7px;width:75%; float:left"/>
+                    <button type="button" onclick="connect($('#privateServer').val()); return false;" class="btn btn-info" style="margin-top:7px;margin-left:6px;float:left;width:23%">Connect</button>
                     </div>
                     <div id="locationUnknown">
                         <select id="region" class="form-control" onchange="setRegion($('#region').val());" required>
@@ -715,40 +719,7 @@
                 <a class="hide" onclick="event.preventDefault(); var x = document.getElementById('botpanel'); x.style.left=(x.style.left == '0px'? '-207px' : '0px')"></a>
             </div>
             <div id="blackscreen" style="z-index:99;position:absolute;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.3);pointer-events:none;display:none"></div>
-            <div id="chatbox">
-                <div class=messages-content>
-                    <div class="message-row"><span class="sender">Terjanq YouTube:</span>xxxxsad asd asdasd asd asdasdasdasdasdas o kurwa splituj zjebany asdasdasda sda sdasa
-                    </div>
-                    <div class="message-row"><span class="sender">Terjanq:</span>xxxxa
-                    </div>
-                    <div class="message-row"><span class="sender">Nolies:</span>xxxxa
-                    </div>
-                    <div class="message-row"><span class="sender">Ups:</span>xxxxa
-                    </div>
-                    <div class="message-row"><span class="sender">buka:</span>xxxxa
-                    </div>
-                    <div class="message-row"><span class="sender">Terjanq YouTube:</span>xxxxsad asd asdasd asd asdasdasdasdasdas o kurwa splituj zjebany asdasdasda sda sdasa
-                    </div>
-                    <div class="message-row"><span class="sender">Terjanq:</span>xxxxa
-                    </div>
-                    <div class="message-row"><span class="sender">Nolies:</span>xxxxa
-                    </div>
-                    <div class="message-row"><span class="sender">Ups:</span>xxxxa
-                    </div>
-                    <div class="message-row"><span class="sender">buka:</span>xxxxa
-                    </div>
-                    <div class="message-row"><span class="sender">Terjanq YouTube:</span>xxxxsad asd asdasd asd asdasdasdasdasdas o kurwa splituj zjebany asdasdasda sda sdasa
-                    </div>
-                    <div class="message-row"><span class="sender">Terjanq:</span>xxxxa
-                    </div>
-                    <div class="message-row"><span class="sender">Nolies:</span>xxxxa
-                    </div>
-                    <div class="message-row"><span class="sender">Ups:</span>xxxxa
-                    </div>
-                    <div class="message-row"><span class="sender">buka:</span>xxxxa
-                    </div>
-                </div>
-            </div>
+
 </body>
 
 </html>
